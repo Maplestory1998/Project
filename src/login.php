@@ -16,6 +16,10 @@
             <input type="text" name="username" placeholder="Username" required>
             <label for "psw">Password:</label><br>
             <input type="password" name="psw" placeholder="Password" required>
+            <?php
+                $ret = $_GET["msg"];
+                echo "<p style=\"color:red\">$ret</p>";
+            ?>
             <input type="submit" value="LOGIN">
         </form>
     </div>
