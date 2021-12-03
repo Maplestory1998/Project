@@ -16,7 +16,7 @@
             $user = $_SESSION["username"]; 
             echo "Log as: $user";
         ?>
-        <a href="signout.php"> | Sign out</a>
+        <a href="signout.php">Sign out</a>
     </div>
 
 </body>
