@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include_once('conn.php');
 
     $uname = $_POST['username'];
@@ -11,11 +10,12 @@
 
     if(mysqli_num_rows($resultCheckLog) > 0)
     {
+        session_start();   
         $_SESSION['username'] = $uname ;
         $_SESSION['role'] = mysqli_fetch_assoc($resultCheckLog)['role']; // 1-admin ;
         mysqli_close($conn);
 
-        header('Location: changepsw.php');
+        header('Location: main.html');
     }
     else
     {

@@ -9,6 +9,14 @@
 </head>
 
 <body>
+    <?php
+        session_start();
+        if(!isset($_SESSION["username"]) || $_SESSION["username"] == "")
+        {
+            $msg="Please log in!";
+            header("Location: login.php?msg=$msg");
+        }
+    ?>
     <p>Use the form below to change the password for your account</p>
     <div id="changepswform">
         <form name="changepsw" action="changepswaction.php" onsubmit="return validateForm()" method="post">
