@@ -15,7 +15,7 @@
         $_SESSION['role'] = mysqli_fetch_assoc($resultCheckLog)['role']; // 1-admin ;
         mysqli_close($conn);
 
-        header('Location: main.html');
+        header('Location: index.php');
     }
     else
     {
