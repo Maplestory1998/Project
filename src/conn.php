@@ -15,5 +15,3 @@
         echo "Fail to connect MySQL";
         die();
     }
-
-?>
