@@ -15,7 +15,9 @@ if (mysqli_num_rows($result) > 0) {
     $psw = mysqli_fetch_assoc($result)["Password"];
     echo $psw;
     if ($psw !== $curpsw) {
-        $msg = "Current Password is incorrect";
+        // Current Password is incorrect
+        $msg = "1";
+
     } else {
         $sql2 = "UPDATE PoliceOffice SET Password = '$newpsw' WHERE Username = '$username';";
         //change psw;
@@ -24,12 +26,16 @@ if (mysqli_num_rows($result) > 0) {
         $sql3 = "SELECT * FROM PoliceOffice WHERE Username = '$username' AND Password = '$newpsw' ";
         mysqli_query($conn, $sql3);
         if (mysqli_num_rows($result) > 0) //success
-            $msg = "Change Password Successful!";
+        // Change Password Successful!
+            $msg = "2";
         else
-            $msg = "Fail to change Password!";
+        // Fail to change Password!
+            $msg = "3";
     }
 } else {
-    $msg = "Fail to find current account!";
+    // Fail to find current account!
+    $msg = "4";
 }
 mysqli_close($conn);
-header('Location: changePsw.php?msg=$msg');
+header("Location: changePsw.php?msg=$msg");
+?>

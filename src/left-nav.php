@@ -13,6 +13,7 @@
             padding:10px 0px;
             background-color: grey;
             margin: 50px 10px;
+            float: left;
         }
 
         .left-nav .features{
