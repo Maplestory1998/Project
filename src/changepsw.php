@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Change Password</title>
-    <link rel="stylesheet" type="text/css" href="../css/changepsw.css">
 
 </head>
 
@@ -18,24 +17,24 @@
         }
     ?>
     <p>Use the form below to change the password for your account</p>
-    <div id="changepswform">
-        <form name="changepsw" action="changepswaction.php" onsubmit="return validateForm()" method="post">
+    <div id="changePswForm">
+        <form name="changePsw" action="changePswAction.php" onsubmit="return validateForm()" method="post">
             <label for "curpsw">Current Password:</label><br>
-            <input type="password" name="curpsw" id="curpsw" required><br>
+            <input type="password" name="curPsw" id="curPsw" required><br>
             <label for "newpsw">New Password:</label><br>
-            <input type="password" name="newpsw" id="newpsw" required><br>
+            <input type="password" name="newPsw" id="newPsw" required><br>
             <label for "newpsw2">Re-enter new Password:</label><br>
-            <input type="password" name="newpsw2" id="newpsw2" required><br>
-            <button type="submit" name="subpsw">Save changes</button>
+            <input type="password" name="newPsw2" id="newPsw2" required><br>
+            <button type="submit" name="subPsw">Save changes</button>
         </form>
     </div>
 
     <script>
 
         function validateForm() {
-            let x = document.getElementById("newpsw").value;
+            let x = document.getElementById("newPsw").value;
 
-            let y = document.getElementById("newpsw2").value;
+            let y = document.getElementById("newPsw2").value;
             if (x !== y) {
                 alert("Passwords do not match!");
                 return false;

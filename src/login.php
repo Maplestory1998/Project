@@ -11,7 +11,7 @@
 <body>
     <div id="login">
         <h1>Police Traffic</h1>
-        <form name="loginform" method="post" action="loginaction.php" >
+        <form name="loginform" method="post" action="loginAction.php" >
             <label for "username">Username:</label><br>
             <input type="text" name="username" placeholder="Username" required>
             <label for "psw">Password:</label><br>

@@ -2,9 +2,9 @@
 session_start();
 include_once('conn.php');
 $username = $_SESSION['username'];
-$curpsw = $_POST['curpsw'];
-$newpsw = $_POST['newpsw'];
-$newpsw2 = $_POST['newpsw2'];
+$curpsw = $_POST['curPsw'];
+$newpsw = $_POST['newPsw'];
+$newpsw2 = $_POST['newPsw2'];
 
 
 $msg = "";
@@ -32,4 +32,4 @@ if (mysqli_num_rows($result) > 0) {
     $msg = "Fail to find current account!";
 }
 mysqli_close($conn);
-header('Location: changepsw.php?msg=$msg');
+header('Location: changePsw.php?msg=$msg');
