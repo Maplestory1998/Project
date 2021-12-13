@@ -6,11 +6,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            font-style: serif;
+            font-size: 30px;
+        }
+        .sentence {
+            font-size: 30px;
+            color: white;
+            height: 70px;
+            width: 100%;
+            line-height: 70px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+
+            background-color: rgb(19,27,38);
+        }
+
+        .addCarsInfoForm {
+            height: 850px;
+            padding: 50px;
+            margin: 0 auto;
+
+
+        }
+
+        .form {
+            margin: 50px auto 0 auto;
+            width: 50%;
+            padding-left: 500px;
+
+        }
+
+
+        input {
+            width: 600px;
+            padding: 12px 20px;
+            margin: 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 300px;
+            margin: 10px 150px 10px 150px; 
+            border-radius: 16px;
+            font-size: 30px;
+        
+        }
+
+        button:hover{
+            color: #993300;
+            text-decoration: none;
+        }
+
+        button:active{
+            color: #ff0033;
+            text-decoration: none;
+
+        }
+
+        #menu4 {
+            background-color: rgb(0, 71, 153);
+        }
+    </style>
 </head>
 
 <body>
     <?php
     session_start();
+    ob_start();
     if (!isset($_SESSION["username"]) || $_SESSION["username"] == "") {
         $msg = "Please log in!";
         header("Location: login.php?msg=$msg");
@@ -24,8 +92,29 @@
     if ($ownerID != "-1") {
         $msg = "-1";
         header("Location: addCars.php?msg=$msg");
+        exit;
     }
+    ?>
+    <div class="sentence">Owner isn't in system. Please enter detailed information</div>
+    <div class="addCarsInfoForm">
+        <form name="addCarsInfo2" class="form" method="post">
+            <label for "vLic">Please input Vehicle Licence:</label><br>
+            <input type="text" name="vLic" placeholder="Vehicle Licence" required><br>
+            <label for "model">Please input model:</label><br>
+            <input type="text" name="model" placeholder="model" required><br>
+            <label for "color">Please input color:</label><br>
+            <input type="text" name="color" placeholder="color" required><br>
+            <label for "ownerName">Please input owner's name:</label><br>
+            <input type="text" name="ownerName" placeholder="owner name" required><br>
+            <label for "ownerLic">Please input owner's licence:</label><br>
+            <input type="text" name="ownerLic" placeholder="owner licence" required><br>
+            <label for "ownerAdd">Please input owner's address(optional)</label><br>
+            <input type="text" name="ownerAdd" placeholder="owner address"><br>
 
+            <button type="submit" name="addcarinfo">Add Car</button>
+        </form>
+    </div>
+    <?php
     if (isset($_POST["addcarinfo"])) {
         $vLic = $_POST["vLic"];
         $model = $_POST["model"];
@@ -68,27 +157,13 @@
         //succeed to add new People and Cars.
         $msg = "0";
         header("Location: addCars.php?msg=$msg");
+        exit;
     }
+    ob_end_flush();
+    exit;
 
     ?>
-    <div class="addCarsInfoForm2">
-        <form name="addCarsInfo2" method="post">
-            <label for "vLic">Please input Vehicle Licence</label>
-            <input type="text" name="vLic" placeholder="Vehicle Licence" required><br>
-            <label for "model">Please input model</label>
-            <input type="text" name="model" placeholder="model" required><br>
-            <label for "color">Please input color</label>
-            <input type="text" name="color" placeholder="color" required><br>
-            <label for "ownerName">Please input owner's name</label>
-            <input type="text" name="ownerName" placeholder="owner name" required><br>
-            <label for "ownerLic">Please input owner's licence</label>
-            <input type="text" name="ownerLic" placeholder="owner licence" required><br>
-            <label for "ownerAdd">Please input owner's address(optional)</label>
-            <input type="text" name="ownerAdd" placeholder="owner address"><br>
 
-            <button type="submit" name="addcarinfo">Add Car</button>
-        </form>
-    </div>
 
 
 </body>

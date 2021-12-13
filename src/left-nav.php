@@ -9,58 +9,65 @@
     <style>
         .left-nav{
             width:400px;
-            height:700px;
+            height:1000px;
             padding:10px 0px;
-            background-color: grey;
-            margin: 50px 10px;
+            background-color: rgb(19,27,38);
+            color: white;
+            /* margin: 50px 10px; */
             float: left;
         }
 
         .left-nav .features{
             height: 45px;
             line-height: 45px;
-            margin: 30px ;
-            padding-left:18px;
+            padding-left: 50px ;
+            padding-top: 30px;
+            padding-bottom: 30px;    
         }
 
         .features:hover{
-            background-color: #d9d9d9;
+            background-color: rgb(0,71,153);
         }
 
         .features a{
             font-size: 32px;
-            color:#333;
+            color: white;
             text-decoration:  none;
         }
 
         .features a:hover{
-            color:#c81623;
+            color: #993300;
+        }
+
+        .feature a:active{
+            color: #ff0033;
+            text-decoration: none;  
         }
     </style>
 </head>
 
 <body>
     <div class="left-nav">
-        <div class="features">
+        <div class="features" id="menu1">
             <a href="changePsw.php">Change Password</a>
         </div>
-        <div class="features">
+        <div class="features" id="menu2">
             <a href="lookUpPeople.php">Look up People</a>
         </div>
-        <div class="features">
+        <div class="features" id="menu3">
             <a href="lookUpVehicle.php">Look up Vehicle</a>
         </div>
-        <div class="features">
+        <div class="features" id="menu4">
             <a href="addCars.php">Add Cars</a>
         </div>
-        <div class="features">
+        <div class="features" id="menu5">
             <a href="fileReport.php">File Report</a>
         </div>
-        <div class="features">
-            <a href="createAccount.php">Create Accounts</a>
+        <div class="features" id="menu6">
+            <a href="createAccount.php">Create Accounts (Admin)</a>
         </div>
-        <div class="features">
-            <a href="addFines.php">Add Fines</a>
+        <div class="features" id="menu7">
+            <a href="addFines.php">Add Fines (Admin)</a>
         </div>
     </div>
 

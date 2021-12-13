@@ -46,7 +46,7 @@
         }
         // header("Location: addCars.php?msg=$msg");
     }
-
+    ?>
 
 
 </body>

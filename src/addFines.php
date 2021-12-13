@@ -5,26 +5,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="getQueryResult.js" type="text/javascript"></script>
+    <title>Add Fines</title>
+    <style>
+        * {
+            font-style: serif;
+            font-size: 30px;
+        }
+
+        .sentence {
+            font-size: 30px;
+            color: white;
+            height: 70px;
+            width: 100%;
+            line-height: 70px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+
+            background-color: rgb(19, 27, 38);
+        }
+
+        #addFinesForm {
+            width: 80%;
+            height: 850px;
+            padding: 50px;
+            /* background-color: red; */
+        }
+
+        .form {
+            margin: 100px auto 100px auto;
+            background-color: white;
+
+            width: 600px;
+            padding-left: 100px;
+
+        }
+
+
+        input {
+            width: 600px;
+            padding: 12px 20px;
+            margin: 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 300px;
+            margin: 10px 150px 10px 150px;
+            border-radius: 16px;
+            font-size: 30px;
+        }
+
+        button:hover {
+            color: #993300;
+            text-decoration: none;
+        }
+
+        button:active {
+            color: #ff0033;
+            text-decoration: none;
+
+        }
+
+        #menu1 {
+            background-color: rgb(0, 71, 153);
+        }
+    </style>
 </head>
 
 <body>
     <?php
     session_start();
+    ob_start();
     if (!isset($_SESSION["username"]) || $_SESSION["username"] == "") {
         $msg = "Please log in!";
         header("Location: login.php?msg=$msg");
+        exit;
     }
     if ($_SESSION["role"] != 1) {
         $msg = "1";
         header("Location: index.php?msg=$msg");
+        exit;
     }
     include_once("header.php");
     include_once("left-nav.php");
     ?>
 
-    <div id="addFinesForm">
-        <p>Use the form below to add fines</p>
+    <div class="sentence">Use the form below to add fines</div>
+    <div class="addFinesForm">
         <form name="addFines" class="form" method="post">
             <label for "incidentID">Incident ID:</label><br>
             <input type="text" name="incidentID" required><br>
@@ -62,21 +134,10 @@
         }
         mysqli_close($conn);
         header("Location: addFines.php?msg=$msg");
+        ob_end_flush();
     }
     ?>
     <script>
-        function getQueryVariable(name) {
-            var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            for (var i = 0; i < vars.length; i++) {
-                var pair = vars[i].split("=");
-                if (pair[0] == name) {
-                    return pair[1];
-                }
-            }
-            return false;
-        }
-
         var content = getQueryVariable("msg");
         switch (content) {
             case "1":

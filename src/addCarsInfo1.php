@@ -7,22 +7,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+        *{
+            font-style: serif;
+            font-size: 30px;
+        }
+        .sentence {
+            font-size: 30px;
+            color: white;
+            height: 70px;
+            width: 100%;
+            line-height: 70px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+
+            background-color: rgb(19,27,38);
+        }
+
+        .addCarsInfoForm {
+            height: 850px;
+            padding: 50px;
+            margin: 0 auto;     
+
+        }
+
+        .form {
+            margin: 50px auto 0 auto;
+            width: 50%;
+            padding-left: 500px;    
+        }
+
+
+        input {
+            width: 600px;
+            padding: 12px 20px;
+            margin: 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 300px;
+            margin: 10px 150px 10px 150px; 
+            border-radius: 16px;
+            font-size: 30px;
+        
+        }
+
+        button:hover{
+            color: #993300;
+            text-decoration: none;
+        }
+
+        button:active{
+            color: #ff0033;
+            text-decoration: none;
+
+        }
+
+        #menu4 {
+            background-color: rgb(0, 71, 153);
+        }
+    </style>
 
 <body>
+
     <?php
     session_start();
+    ob_start();
     if (!isset($_SESSION["username"]) || $_SESSION["username"] == "") {
         $msg = "Please log in!";
         header("Location: login.php?msg=$msg");
+        exit;
     }
     include_once("header.php");
     include_once("left-nav.php");
     include_once('conn.php');
+    ?>
+    <div class="sentence">Owner exists in system. Please enter vehicle information</div>
+    <div class="addCarsInfoForm">
+        <form name="addCarsInfo" class="form" method="post">
+            <label for "vLic">Please input Vehicle Licence</label>
+            <input type="text" name="vLic" placeholder="Vehicle Licence" required><br>
+            <label for "model">Please input model</label>
+            <input type="text" name="model" placeholder="model" required><br>
+            <label for "color">Please input color</label>
+            <input type="text" name="color" placeholder="color" required><br>
+            <button type="submit" name="addcarinfo">Add Car</button>
+        </form>
+    </div>
 
+    <?php
     $ownerID = $_GET["ownerID"];
     if ($ownerID == "") {
         $msg = "-1";
         header("Location: addCars.php?msg=$msg");
+        exit;
     }
     if (isset($_POST["addcarinfo"])) {
         $vLic = $_POST["vLic"];
@@ -48,21 +131,12 @@
             // Fail to add new Cars INFO.
             $msg = "2";
         }
-        // header("Location: addCars.php?msg=$msg");
+        header("Location: addCars.php?msg=$msg");
     }
+    ob_end_flush();
+    exit;
 
     ?>
-    <div class="addCarsInfoForm">
-        <form name="addCarsInfo" method="post">
-            <label for "vLic">Please input Vehicle Licence</label>
-            <input type="text" name="vLic" placeholder="Vehicle Licence" required><br>
-            <label for "model">Please input model</label>
-            <input type="text" name="model" placeholder="model" required><br>
-            <label for "color">Please input color</label>
-            <input type="text" name="color" placeholder="color" required><br>
-            <button type="submit" name="addcarinfo">Add Car</button>
-        </form>
-    </div>
 
 
 </body>

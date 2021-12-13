@@ -4,40 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Change Password</title>
+    <script src="getQueryResult.js" type="text/javascript"></script>
     <style>
-        #changePswForm {
-            background-color: red;
-            width: 1000px;
-            height: 700px;
+        *{
+            font-style: serif;
+            font-size: 30px;
+        }
+        .sentence {
+            font-size: 30px;
+            color: white;
+            height: 70px;
+            width: 100%;
+            line-height: 70px;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 50px;
-            padding: 50px;
+            text-align: center;
+
+            background-color: rgb(19,27,38);
         }
 
-        #changePswForm p {
-            font-size: 30px;
-
+        #changePswForm {
+            width: 80%;
+            height: 850px;
+            padding: 50px;
+            /* background-color: red; */
         }
 
         .form {
-            background-color: green;
             margin: 100px auto 100px auto;
+            background-color: white;
 
             width: 600px;
-            /* text-align:center; */
             padding-left: 100px;
 
         }
 
+
         input {
-            width: 400px;
+            width: 600px;
             padding: 12px 20px;
-            margin: 8px 0;
+            margin: 20px 0;
             display: inline-block;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 8px;
             box-sizing: border-box;
+        }
+
+        button {
+            width: 300px;
+            margin: 10px 150px 10px 150px; 
+            border-radius: 16px;
+            font-size: 30px;
+        }
+
+        button:hover{
+            color: #993300;
+            text-decoration: none;
+        }
+
+        button:active{
+            color: #ff0033;
+            text-decoration: none;
+
+        }
+
+        #menu1 {
+            background-color: rgb(0, 71, 153);
         }
     </style>
 </head>
@@ -53,10 +85,9 @@
     include_once("left-nav.php");
     ?>
 
-
+    <div class="sentence">Use the form below to change the password for your account</div>
     <div id="changePswForm">
-        <p>Use the form below to change the password for your account</p>
-        <form name="changePsw" class="form" action="changePswAction.php" onsubmit="return validateForm()" method="post">
+         <form name="changePsw" class="form" action="changePswAction.php" onsubmit="return validateForm()" method="post">
             <label for "curpsw">Current Password:</label><br>
             <input type="password" name="curPsw" id="curPsw" required><br>
             <label for "newpsw">New Password:</label><br>
@@ -64,7 +95,7 @@
             <label for "newpsw2">Re-enter new Password:</label><br>
             <input type="password" name="newPsw2" id="newPsw2" required><br>
             <button type="submit" name="subPsw">Save changes</button>
-        </form>
+            </form>
     </div>
 
     <script>
@@ -77,18 +108,6 @@
                 return false;
             }
 
-        }
-
-        function getQueryVariable(name) {
-            var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            for (var i = 0; i < vars.length; i++) {
-                var pair = vars[i].split("=");
-                if (pair[0] == name) {
-                    return pair[1];
-                }
-            }
-            return false;
         }
 
         var content = getQueryVariable("msg");
