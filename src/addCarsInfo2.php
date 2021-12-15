@@ -157,7 +157,7 @@
         //succeed to add new People and Cars.
         $msg = "0";
         header("Location: addCars.php?msg=$msg");
-        exit;
+        
     }
     ob_end_flush();
     exit;

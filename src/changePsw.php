@@ -27,7 +27,7 @@
             width: 80%;
             height: 850px;
             padding: 50px;
-            /* background-color: red; */
+            background-color: red;
         }
 
         .form {
