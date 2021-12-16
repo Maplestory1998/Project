@@ -14,13 +14,13 @@
             background-color: rgb(19,27,38);
             color: white;
             /* margin: 50px 10px; */
-            float: left;
+            float: left;    
         }
 
         .left-nav .features{
             height: 45px;
             line-height: 45px;
-            padding-left: 50px ;
+            padding-left: 40px ;
             padding-top: 30px;
             padding-bottom: 30px;    
         }
@@ -30,7 +30,7 @@
         }
 
         .features a{
-            font-size: 32px;
+            font-size: 30px;
             color: white;
             text-decoration:  none;
         }

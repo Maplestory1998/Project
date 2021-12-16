@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="getQueryResult.js" type="text/javascript"></script>
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <title>File report</title>
 </head>
 
 <body>
@@ -22,11 +23,11 @@
     include_once('conn.php');
     if ($_GET["msg"] == "") {
         $msg = "-1";
-        header("Location: fileReportAction.php?msg=$msg");
+        header("Location: fileReport.php?msg=$msg");
     }
 
     ?>
-    <div class="addInfo">
+    <div class="divForm">
         <form name="Info" id="Info" class="form" method="post">
             <label for "model" id="formodel">Please input model:</label><br>
             <input type="text" name="model" id="model" placeholder="model" required><br>
@@ -76,6 +77,7 @@
         var content = getQueryVariable("msg");
         switch (content) {
             case "2":
+                // only lack VehicleInfo
                 deletePeopleInfoForm();
                 break;
             case "3":
@@ -85,17 +87,10 @@
     </script>
 
     <?php
-    echo "haha";
     if (isset($_POST["addinfo"])) {
-        echo "haha";
         $VehicleLic = $_GET["VehicleLic"];
-        echo "haha2";
         $PeopleLic = $_GET["PeopleLic"];
-        echo "haha3";
         $time = $_GET["time"];
-        echo "haha4";
-        $reportDesc = $_GET["reportDesc"];
-        echo "haha5";
         $OffenceID = $_GET["OffenceID"];
         
         $model = $_POST["model"];

@@ -8,17 +8,14 @@
     <title>Document</title>
     <style>
         .result{
-            width:80%;
-            margin: 0 auto;
+            margin-left: 400px;
         }
         table{
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
-            width: 70%;
+            /* width: 70%; */
             margin: 0 auto;
-
         }
-
         td,th {
             text-align: center;
             border: 2px solid #ddd;
@@ -41,12 +38,14 @@
 </head>
 
 <body>
-
     <?php
+    session_start();
+    ob_start();
     include_once('conn.php');
     include_once("header.php");
     include_once("left-nav.php");
-    session_start();
+    
+    
     if (!isset($_SESSION["username"]) || $_SESSION["username"] == "") {
         $msg = "Please log in!";
         header("Location: login.php?msg=$msg");
@@ -67,6 +66,7 @@
         $result = mysqli_query($conn, $sql);
     }
     else header("Location: lookUpPeople.php");
+    ob_end_flush();
     
     ?>
     <div class="result">

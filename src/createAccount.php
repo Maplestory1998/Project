@@ -5,71 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <script src="getQueryResult.js" type="text/javascript"></script>
     <title>Create Account</title>
     <style>
-        * {
-            font-style: serif;
-            font-size: 30px;
-        }
-
-        .sentence {
-            font-size: 30px;
-            color: white;
-            height: 70px;
-            width: 100%;
-            line-height: 70px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-
-            background-color: rgb(19, 27, 38);
-        }
-
-        #changePswForm {
-            width: 80%;
-            height: 850px;
-            padding: 50px;
-            /* background-color: red; */
-        }
-
-        .form {
-            margin: 100px auto 100px auto;
-            background-color: white;
-
-            width: 600px;
-            padding-left: 100px;
-
-        }
-
-
-        input {
-            width: 600px;
-            padding: 12px 20px;
-            margin: 20px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 300px;
-            margin: 10px 150px 10px 150px;
-            border-radius: 16px;
-            font-size: 30px;
-        }
-
-        button:hover {
-            color: #993300;
-            text-decoration: none;
-        }
-
-        button:active {
-            color: #ff0033;
-            text-decoration: none;
-
-        }
 
         #menu6 {
             background-color: rgb(0, 71, 153);
@@ -93,10 +32,11 @@
     }
     include_once("header.php");
     include_once("left-nav.php");
+    include_once('conn.php');
     ?>
 
     <div class="sentence">Use the form below to create new police officer accounts:</div>
-    <div class="createAccountForm">
+    <div class="divForm">
         <form name="createAccount" class="form" method="post">
             <label for "new_username">New Username:</label><br>
             <input type="text" name="new_username" required><br>
@@ -107,7 +47,6 @@
     </div>
 
     <?php
-    include_once('conn.php');
     $msg = "";
     if (isset($_POST['submit'])) {
         $new_username = $_POST["new_username"];
@@ -128,7 +67,6 @@
             }
         }
         header("Location: createAccount.php?msg=$msg");
-        exit;
     }
     ob_end_flush();
     ?>

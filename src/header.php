@@ -8,6 +8,7 @@
     <style>
         *{
             margin: 0 0;
+            font-family: serif;
         }
 
         #nav {
@@ -21,6 +22,7 @@
             font-size: 40px;
             height: 100px;
             line-height: 100px;
+    
             float: left;
             margin-left: 20px;
         }

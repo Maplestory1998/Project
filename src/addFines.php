@@ -5,73 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <script src="getQueryResult.js" type="text/javascript"></script>
     <title>Add Fines</title>
     <style>
-        * {
-            font-style: serif;
-            font-size: 30px;
-        }
 
-        .sentence {
-            font-size: 30px;
-            color: white;
-            height: 70px;
-            width: 100%;
-            line-height: 70px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-
-            background-color: rgb(19, 27, 38);
-        }
-
-        #addFinesForm {
-            width: 80%;
-            height: 850px;
-            padding: 50px;
-            /* background-color: red; */
-        }
-
-        .form {
-            margin: 100px auto 100px auto;
-            background-color: white;
-
-            width: 600px;
-            padding-left: 100px;
-
-        }
-
-
-        input {
-            width: 600px;
-            padding: 12px 20px;
-            margin: 20px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 300px;
-            margin: 10px 150px 10px 150px;
-            border-radius: 16px;
-            font-size: 30px;
-        }
-
-        button:hover {
-            color: #993300;
-            text-decoration: none;
-        }
-
-        button:active {
-            color: #ff0033;
-            text-decoration: none;
-
-        }
-
-        #menu1 {
+        #menu7 {
             background-color: rgb(0, 71, 153);
         }
     </style>
@@ -96,7 +35,7 @@
     ?>
 
     <div class="sentence">Use the form below to add fines</div>
-    <div class="addFinesForm">
+    <div class="divForm">
         <form name="addFines" class="form" method="post">
             <label for "incidentID">Incident ID:</label><br>
             <input type="text" name="incidentID" required><br>
@@ -127,26 +66,26 @@
             $result_verify = mysqli_query($conn, $sql_verify);
             echo $sql_verify;
             if (mysqli_num_rows($result_verify) > 0) {
-                $msg = "1";
-            } else $msg = "2";
+                $msg = "0";
+            } else $msg = "1";
         } else {
-            $msg = "3";
+            $msg = "2";
         }
         mysqli_close($conn);
         header("Location: addFines.php?msg=$msg");
-        ob_end_flush();
     }
+    ob_end_flush();
     ?>
     <script>
         var content = getQueryVariable("msg");
         switch (content) {
-            case "1":
+            case "0":
                 alert("Add fine successuful.");
                 break;
-            case "2":
+            case "1":
                 alert("Fail to add fine!");
                 break;
-            case "3":
+            case "2":
                 alert("Incident isn't exist!");
         }
     </script>

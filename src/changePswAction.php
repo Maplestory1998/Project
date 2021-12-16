@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 include_once('conn.php');
 if (!isset($_SESSION["username"]) || $_SESSION["username"] == "") {
     $msg = "Please log in!";
@@ -18,7 +19,7 @@ if (isset($_POST["subPsw"])) {
 
     if (mysqli_num_rows($result) > 0) {
         $psw = mysqli_fetch_assoc($result)["Password"];
-        echo $psw;
+    
         if ($psw !== $curpsw) {
             // Current Password is incorrect
             $msg = "1";
@@ -30,7 +31,7 @@ if (isset($_POST["subPsw"])) {
             $sql3 = "SELECT * FROM PoliceOffice WHERE Username = '$username' AND Password = '$newpsw' ";
             mysqli_query($conn, $sql3);
             if (mysqli_num_rows($result) > 0) //success
-                // Change Password Successful!
+                // Password Changed successful!
                 $msg = "2";
             else
                 // Fail to change Password!
@@ -42,5 +43,5 @@ if (isset($_POST["subPsw"])) {
     }
     mysqli_close($conn);
     header("Location: changePsw.php?msg=$msg");
+    ob_end_flush();
 }
-?>

@@ -5,58 +5,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
     <script src="getQueryResult.js" type="text/javascript"></script>
-    <title>Document</title>
+    <title>File report</title>
     <style>
-        * {
-            font-style: serif;
-            font-size: 30px;
+        .divForm {
+            height: 200px;
+            padding: 0;
         }
 
-        .sentence {
+        .form {
+            margin: 0px auto;
+            background-color: white;
+            width: 1000px;
+            padding: 70px 0 0 100px;
+            border-bottom-style: solid;
+            border-bottom-color: rgb(239, 239, 239);
+        }
+
+        .FilereportForm {
+
+            margin-left: 400px;
+            height: 800px;
+
+            border-bottom-style: solid;
+            border-bottom-color: rgb(239, 239, 239);
+            /* background-color: red; */
+        }
+
+        #tips {
+            margin: 0 auto;
             font-size: 30px;
             color: white;
             height: 70px;
-            width: 100%;
             line-height: 70px;
-            margin-left: auto;
-            margin-right: auto;
             text-align: center;
-
             background-color: rgb(19, 27, 38);
         }
 
-        #retrieveForm {
-            width: 80%;
-            height: 100px;
-
-            border-bottom-style:solid;
-
-            border-bottom-color: rgb(239,239,239);
-            /* background-color: red; */
-        }
-        .FilereportForm{
-
-            width: 80%;
-            height: 400px;
-
-            border-bottom-style:solid;
-            border-bottom-color: rgb(239,239,239);
-            /* background-color: red; */
-        }
-
-
-        .form {
-            margin: 100px auto 100px auto;
-            background-color: white;
-
-            width: 600px;
-            padding-left: 100px;
-
-        }
-
-
-        input, select{
+        select {
             width: 600px;
             padding: 12px 20px;
             margin: 20px 0;
@@ -64,24 +51,6 @@
             border: 1px solid #ccc;
             border-radius: 8px;
             box-sizing: border-box;
-        }
-
-        button {
-            width: 300px;
-            margin: 10px 150px 10px 150px;
-            border-radius: 16px;
-            font-size: 30px;
-        }
-
-        button:hover {
-            color: #993300;
-            text-decoration: none;
-        }
-
-        button:active {
-            color: #ff0033;
-            text-decoration: none;
-
         }
 
         #menu5 {
@@ -105,21 +74,22 @@
 
     ?>
     <div class="sentence">Use the form below to file or retrieve reports</div>
-    <div id="retrieveForm">
+    <div class="divForm">
         <form name="retrieve" class="form" method="post" action="retrieveReports.php">
             <button type="submit" name="retrieve">Retrieve Reports</button>
         </form>
     </div>
 
     <div class="FilereportForm">
+        <div id="tips">Enter details to file a report</div>
         <form name="fileReport" class="form" method="post" action="fileReportAction.php">
-            <label for "reportDesc">Please enter the description of incident</label>
+            <label for "reportDesc">Please enter the description of incident</label><br>
             <input type="text" name="reportDesc" placeholder="reportDesc" required><br>
-            <label for "time">Please enter the time of incident</label>
-            <input type="text" name="time" placeholder="time" required><br>
-            <label for "VehicleLic">Please enter the licence of vehicle involved</label>
+            <label for "time">Please enter the time of incident</label><br>
+            <input type="date" name="time" placeholder="xxxx-xx-xx" required><br>
+            <label for "VehicleLic">Please enter the licence of vehicle involved</label><br>
             <input type="text" name="VehicleLic" placeholder="VehicleLic" required><br>
-            <label for "PeopleLic">Please enter the licence of people involved</label>
+            <label for "PeopleLic">Please enter the licence of people involved</label><br>
             <input type="text" name="PeopleLic" placeholder="PeopleLic" required><br>
             <p>Please select the Offence descriptin</p>
             <select name="OffenceDescr">

@@ -5,31 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <title>Add cars</title>
     <style>
-        *{
-            font-style: serif;
-            font-size: 30px;
-        }
-        .sentence {
-            font-size: 30px;
-            color: white;
-            height: 70px;
-            width: 100%;
-            line-height: 70px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-
-            background-color: rgb(19,27,38);
-        }
 
         .addCarsInfoForm {
             height: 850px;
             padding: 50px;
             margin: 0 auto;
-
-
         }
 
         .form {
@@ -38,37 +21,6 @@
             padding-left: 500px;
 
         }
-
-
-        input {
-            width: 600px;
-            padding: 12px 20px;
-            margin: 20px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 300px;
-            margin: 10px 150px 10px 150px; 
-            border-radius: 16px;
-            font-size: 30px;
-        
-        }
-
-        button:hover{
-            color: #993300;
-            text-decoration: none;
-        }
-
-        button:active{
-            color: #ff0033;
-            text-decoration: none;
-
-        }
-
         #menu4 {
             background-color: rgb(0, 71, 153);
         }
@@ -133,6 +85,7 @@
             //Fail to add new people!
             $msg = "3";
             header("Location: addCars.php?msg=$msg");
+            exit;
         }
 
         // get owenrID
@@ -143,7 +96,15 @@
 
         //Add car INFO
         $sql3 = "INSERT INTO Vehicle(Vehicle_type, Vehicle_colour,Vehicle_licence) VALUES('$model', '$color', '$vLic');";
-        $result3 = mysqli_query($conn, $sql3);
+        if(FALSE == mysqli_query($conn, $sql3) )
+        {
+            //Fail to add car INFO, delete the onwen's Info just addd
+            $sql_del = "DELETE FROM People WHERE People_ID = $pID;";
+            mysqli_query($conn, $sql_del);
+            $msg = "2";
+            header("Location: addCars.php?msg=$msg");
+            exit;
+        }
 
         // get Vehicle_ID
         $sql4 = "SELECT Vehicle_ID FROM Vehicle WHERE Vehicle_licence = '$vLic';";
