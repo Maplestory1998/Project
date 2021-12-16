@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/table.css">
     <title>Look up Vehicle</title>
     <style>
         .divForm {
             height: 200px;
             padding: 0;
+            border-bottom-style: solid;
+            border-bottom-color: rgb(239, 239, 239);
         }
 
         .result{
@@ -21,35 +24,12 @@
             background-color: white;
             width: 700px;
             padding: 0 0 0 100px;
-            border-bottom-style: solid;
-            border-bottom-color: rgb(239, 239, 239);
         }
 
         #menu3 {
             background-color: rgb(0, 71, 153);
         }
 
-        table {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            margin:0 auto;
-        }
-
-        td,
-        th {
-            text-align: center;
-            border: 2px solid #ddd;
-            padding: 4px;
-        }
-
-        tr:hover {
-            background-color: #f2f2f2;
-        }
-
-        caption {
-            text-align: center;
-            font-size: 30px;
-        }
     </style>
 
 </head>

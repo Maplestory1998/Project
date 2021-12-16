@@ -11,7 +11,7 @@
             background-color: rgb(0, 71, 153);
         }
 
-        .form {
+        .divForm {
             border-bottom-style: solid;
             border-bottom-color: rgb(239, 239, 239);
         }

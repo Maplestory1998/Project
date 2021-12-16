@@ -21,12 +21,14 @@
 
 <?php
 session_start();
+ob_start();
 if (!isset($_SESSION["username"]) || $_SESSION["username"] == "") {
     $msg = "Please log in!";
     header("Location: login.php?msg=$msg");
 }
 include_once("header.php");
 include_once("left-nav.php");
+ob_end_flush();
 
 ?>
 

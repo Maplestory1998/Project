@@ -12,6 +12,8 @@
         .divForm {
             height: 200px;
             padding: 0;
+            border-bottom-style: solid;
+            border-bottom-color: rgb(239, 239, 239);
         }
 
         .form {
@@ -19,8 +21,6 @@
             background-color: white;
             width: 1000px;
             padding: 70px 0 0 100px;
-            border-bottom-style: solid;
-            border-bottom-color: rgb(239, 239, 239);
         }
 
         .FilereportForm {
@@ -73,7 +73,7 @@
     include_once('conn.php');
 
     ?>
-    <div class="sentence">Use the form below to file or retrieve reports</div>
+    <div class="sentence">Use the button to retrieve reports</div>
     <div class="divForm">
         <form name="retrieve" class="form" method="post" action="retrieveReports.php">
             <button type="submit" name="retrieve">Retrieve Reports</button>
