@@ -52,6 +52,8 @@
         <form name="addCarsInfo2" class="form" method="post">
             <label for "vLic">Please input Vehicle Licence:</label><br>
             <input type="text" name="vLic" placeholder="Vehicle Licence" required><br>
+            <label for "make">Please input make:</label><br>
+            <input type="text" name="make" placeholder="make" required><br>
             <label for "model">Please input model:</label><br>
             <input type="text" name="model" placeholder="model" required><br>
             <label for "color">Please input color:</label><br>
@@ -69,6 +71,7 @@
     <?php
     if (isset($_POST["addcarinfo"])) {
         $vLic = $_POST["vLic"];
+        $make = $_POST['make'];
         $model = $_POST["model"];
         $color = $_POST["color"];
         $ownerName = $_POST["ownerName"];
@@ -95,7 +98,7 @@
         $pID = mysqli_fetch_assoc($result2)['People_ID'];
 
         //Add car INFO
-        $sql3 = "INSERT INTO Vehicle(Vehicle_type, Vehicle_colour,Vehicle_licence) VALUES('$model', '$color', '$vLic');";
+        $sql3 = "INSERT INTO Vehicle(Vehicle_make, Vehicle_model, Vehicle_colour,Vehicle_licence) VALUES('$make', '$model', '$color', '$vLic');";
         if(FALSE == mysqli_query($conn, $sql3) )
         {
             //Fail to add car INFO, delete the onwen's Info just addd

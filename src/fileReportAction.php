@@ -32,7 +32,7 @@ if (isset($_POST["Add"])) {
     if ($num1 > 0 && $num2 > 0) {
 
         $sql1 = "INSERT INTO Incident(Vehicle_ID, People_ID, Incident_Date, Incident_Report, Offence_ID) VALUES('$VID', '$PID', '$time', '$reportDesc', '$OffenceID');";
-        echo $sql1;
+   
         if (mysqli_query($conn, $sql1)) {
             // successful
             $msg = "0";

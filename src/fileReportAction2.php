@@ -29,6 +29,8 @@
     ?>
     <div class="divForm">
         <form name="Info" id="Info" class="form" method="post">
+            <label for "make" id="formake">Please input make:</label><br>
+            <input type="text" name="make" id="make" placeholder="make" required><br>
             <label for "model" id="formodel">Please input model:</label><br>
             <input type="text" name="model" id="model" placeholder="model" required><br>
             <label for "color" id="forcolor">Please input color:</label><br>
@@ -62,16 +64,22 @@
 
         function deleteVehicleInfoForm() {
             var info = document.getElementById("Info");
+
             var model = document.getElementById("model");
             var formodel = document.getElementById("formodel");
 
             var forcolor = document.getElementById("forcolor");
             var color = document.getElementById("color");
 
+            var formake = document.getElementById("formake");
+            var make = document.getElementById("make");
+
             info.removeChild(model);
             info.removeChild(formodel);
             info.removeChild(forcolor);
             info.removeChild(color);
+            info.removeChild(formake);
+            info.removeChild(make);
         }
 
         var content = getQueryVariable("msg");
@@ -92,7 +100,9 @@
         $PeopleLic = $_GET["PeopleLic"];
         $time = $_GET["time"];
         $OffenceID = $_GET["OffenceID"];
-        
+        $reportDesc = $_GET["reportDesc"];
+
+        $make = $_POST["make"];
         $model = $_POST["model"];
         $color = $_POST["color"];
         $ownerName = $_POST["ownerName"];
@@ -104,7 +114,6 @@
             if ($ownerAdd == "") {
                 // Address isn't entered. Set Address NULL.
                 $sql1 = "INSERT INTO People(People_name, People_licence) VALUES('$ownerName', '$PeopleLic'); ";
-                
             } else $sql1 = "INSERT INTO People(People_name, People_licence, People_address) VALUES('$ownerName', '$PeopleLic', '$ownerAdd');";
             echo $sql1;
             //Add new owner
@@ -123,7 +132,8 @@
         // lack Vehicle INFO
         if ($msg == "1" || $msg == "2") {
             //Add car INFO
-            $sql3 = "INSERT INTO Vehicle(Vehicle_type, Vehicle_colour,Vehicle_licence) VALUES('$model', '$color', '$VehicleLic');";
+            $sql3 = "INSERT INTO Vehicle(Vehicle_make, Vehicle_model, Vehicle_colour,Vehicle_licence) VALUES('$make', '$model', '$color', '$VehicleLic');";
+            echo $sql3;
             $result3 = mysqli_query($conn, $sql3);
         }
 
@@ -137,7 +147,7 @@
         //succeed to add new People and Cars.
         $msg = "0";
 
-        header("Location: fileReport.php?msg=$msg");
+        // header("Location: fileReport.php?msg=$msg");
     }
     ob_end_flush();
     ?>

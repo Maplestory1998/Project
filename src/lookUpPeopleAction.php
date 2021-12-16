@@ -46,6 +46,12 @@
         }
     
         $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) == 0)
+        {
+            $msg = "1";
+            header("Location: lookUpPeople.php?msg=$msg");
+            exit;
+        }
     }
     else header("Location: lookUpPeople.php");
     ob_end_flush();

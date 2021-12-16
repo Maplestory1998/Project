@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Look up People</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <script src="getQueryResult.js" type="text/javascript"></script>
     <style>
         #menu2 {
             background-color: rgb(0, 71, 153);
@@ -46,7 +47,13 @@
             </form>
         </div>
     </div>
-
+    <script>
+        var content = getQueryVariable("msg");
+        if(content == "1")
+        {
+            alert("The person is not in the system.");
+        }
+    </script>
 </html>
 
 

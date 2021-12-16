@@ -46,6 +46,8 @@
         <form name="addCarsInfo" class="form" method="post">
             <label for "vLic">Please input Vehicle Licence:</label>
             <input type="text" name="vLic" placeholder="Vehicle Licence" required><br>
+            <label for "make">Please input make:</label>
+            <input type="text" name="make" placeholder="make" required><br>
             <label for "model">Please input model:</label>
             <input type="text" name="model" placeholder="model" required><br>
             <label for "color">Please input color:</label>
@@ -63,10 +65,11 @@
     }
     if (isset($_POST["addcarinfo"])) {
         $vLic = $_POST["vLic"];
+        $make = $_POST["make"];
         $model = $_POST["model"];
         $color = $_POST["color"];
 
-        $sql1 = "INSERT INTO Vehicle(Vehicle_type, Vehicle_colour,Vehicle_licence) VALUES('$model', '$color', '$vLic');";
+        $sql1 = "INSERT INTO Vehicle(Vehicle_make, Vehicle_model, Vehicle_colour,Vehicle_licence) VALUES('$make', '$model', '$color', '$vLic');";
         if (TRUE == mysqli_query($conn, $sql1)) {
             $sql2 = "SELECT Vehicle_ID FROM Vehicle WHERE Vehicle_licence = '$vLic';";
             $result2 = mysqli_query($conn, $sql2);
