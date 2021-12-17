@@ -90,7 +90,7 @@
             header("Location: addCars.php?msg=$msg");
             exit;
         }
-
+        
         // get owenrID
         $sql2 = "SELECT * FROM People WHERE People_licence = '$ownerLic';";
 
