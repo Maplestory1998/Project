@@ -51,19 +51,19 @@
     <div class="addCarsInfoForm">
         <form name="addCarsInfo2" class="form" method="post">
             <label for "vLic">Please input Vehicle Licence:</label><br>
-            <input type="text" name="vLic" placeholder="Vehicle Licence" required><br>
+            <input type="text" name="vLic" placeholder="Vehicle Licence" maxlength="7" required><br>
             <label for "make">Please input make:</label><br>
-            <input type="text" name="make" placeholder="make" required><br>
+            <input type="text" name="make" placeholder="make" maxlength="20" required><br>
             <label for "model">Please input model:</label><br>
-            <input type="text" name="model" placeholder="model" required><br>
+            <input type="text" name="model" placeholder="model" maxlength="20" required><br>
             <label for "color">Please input color:</label><br>
-            <input type="text" name="color" placeholder="color" required><br>
+            <input type="text" name="color" placeholder="color" maxlength="20" required><br>
             <label for "ownerName">Please input owner's name:</label><br>
-            <input type="text" name="ownerName" placeholder="owner name" required><br>
+            <input type="text" name="ownerName" placeholder="owner name" maxlength="50" required><br>
             <label for "ownerLic">Please input owner's licence:</label><br>
-            <input type="text" name="ownerLic" placeholder="owner licence" required><br>
+            <input type="text" name="ownerLic" placeholder="owner licence" maxlength="16" required><br>
             <label for "ownerAdd">Please input owner's address(optional)</label><br>
-            <input type="text" name="ownerAdd" placeholder="owner address"><br>
+            <input type="text" name="ownerAdd" placeholder="owner address" maxlength="50"><br>
 
             <button type="submit" name="addcarinfo">Add Car</button>
         </form>

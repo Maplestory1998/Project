@@ -35,14 +35,14 @@
         <div class="choice">
             <form name="getPeopleByName" class="form" method="post" action="lookUpPeopleAction.php">
                 <label for "name">Look up people by name:</label><br>
-                <input type="text" name="name" required placeholder="name"><br>
+                <input type="text" name="name" required placeholder="name" maxlength="50"><br>
                 <button type="submit" name="submitByName">Look up</button>
             </form>
         </div>
         <div class="choice">
             <form name="getPeopleByLic" class="form" method="post" action="lookUpPeopleAction.php">
                 <label for "licence">Lookup people by licence:</label><br>
-                <input type="text" name="licence" required placeholder="licence"><br>
+                <input type="text" name="licence" required placeholder="licence" maxlength="16"><br>
                 <button type="submit" name="submitByLic">Look up</button>
             </form>
         </div>

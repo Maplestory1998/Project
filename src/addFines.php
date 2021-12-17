@@ -40,9 +40,9 @@
             <label for "incidentID">Incident ID:</label><br>
             <input type="text" name="incidentID" required><br>
             <label for "amount">Fine Amount:</label><br>
-            <input type="text" name="amount" id="amount" required><br>
+            <input type="number" name="amount" id="amount" min="0" required><br>
             <label for "points">Points:</label><br>
-            <input type="text" name="points" id="points" required><br>
+            <input type="number" name="points" id="points" min="0" required><br>
             <button type="submit" name="submit">Add Fine</button>
         </form>
     </div>
@@ -55,21 +55,42 @@
         $amount = $_POST["amount"];
         $points = $_POST["points"];
 
+
         // find if incidentID exist
-        $sql1 = "SELECT * FROM Incident WHERE Incident_ID=$id;";
+        $sql1 = "SELECT Offence_ID FROM Incident WHERE Incident_ID=$id;";
         $res1 = mysqli_query($conn, $sql1);
         if (mysqli_num_rows($res1) > 0) {
-            $sql = "INSERT INTO Fines(Incident_ID, Fine_Amount, Fine_Points) VALUES($id ,$amount, $points);";
-            $result = mysqli_query($conn, $sql);
+            // get offenceID
+            $OffenceID = mysqli_fetch_assoc($res1)['Offence_ID'];
+            $sql_check = "SELECT Offence_maxFine, Offence_maxPoints FROM Offence as O WHERE O.Offence_ID = $OffenceID;";
+ 
+            $result_check = mysqli_query($conn, $sql_check);
 
-            $sql_verify = "SELECT * FROM Fines WHERE Incident_ID=$id AND Fine_Amount=$amount AND Fine_Points=$points;";
-            $result_verify = mysqli_query($conn, $sql_verify);
-            echo $sql_verify;
-            if (mysqli_num_rows($result_verify) > 0) {
-                $msg = "0";
-            } else $msg = "1";
+            $row = mysqli_fetch_assoc($result_check);
+            //get maxFine and maxPoints by offenceID
+            $maxFine = $row['Offence_maxFine'];
+            $maxPoints = $row['Offence_maxPoints'];
+            echo $maxFine;
+            echo $maxPoints;
+            if($amount > $maxFine && $points > $maxPoints)
+            {
+                $msg = "1";
+            }
+            else if($amount > $maxFine) $msg = "2";
+            else if($points > $maxPoints) $msg = "3";
+            else
+            {
+                $sql = "INSERT INTO Fines(Incident_ID, Fine_Amount, Fine_Points) VALUES($id ,$amount, $points);";
+                $result = mysqli_query($conn, $sql);
+    
+                $sql_verify = "SELECT * FROM Fines WHERE Incident_ID=$id AND Fine_Amount=$amount AND Fine_Points=$points;";
+                $result_verify = mysqli_query($conn, $sql_verify);
+                if (mysqli_num_rows($result_verify) > 0) {
+                    $msg = "0";
+                } else $msg = "4";
+            }
         } else {
-            $msg = "2";
+            $msg = "5";
         }
         mysqli_close($conn);
         header("Location: addFines.php?msg=$msg");
@@ -80,13 +101,23 @@
         var content = getQueryVariable("msg");
         switch (content) {
             case "0":
-                alert("Add fine successuful.");
+                alert("Add fine and penalty points successuful.");
                 break;
             case "1":
-                alert("Fail to add fine!");
+                alert("fine and penality points exceed the maximum.");
                 break;
             case "2":
-                alert("Incident isn't exist!");
+                alert("fine exceeds the maximum.");
+                break;
+            case "3":
+                alert("penalty points exceeds the maximum.");
+                break;
+            case "4":
+                alert("Failed to add fines and penalty points.");
+                break;
+            case "5":
+                alert("Incident isn't existing!");
+                break;
         }
     </script>
 </body>

@@ -84,13 +84,13 @@
         <div id="tips">Enter details to file a report</div>
         <form name="fileReport" class="form" method="post" action="fileReportAction.php">
             <label for "reportDesc">Please enter the description of incident</label><br>
-            <input type="text" name="reportDesc" placeholder="reportDesc" required><br>
+            <input type="text" name="reportDesc" placeholder="reportDesc" maxlength="500" required><br>
             <label for "time">Please enter the time of incident</label><br>
             <input type="date" name="time" placeholder="xxxx-xx-xx" required><br>
             <label for "VehicleLic">Please enter the licence of vehicle involved</label><br>
-            <input type="text" name="VehicleLic" placeholder="VehicleLic" required><br>
+            <input type="text" name="VehicleLic" placeholder="VehicleLic" maxlength="7" required><br>
             <label for "PeopleLic">Please enter the licence of people involved</label><br>
-            <input type="text" name="PeopleLic" placeholder="PeopleLic" required><br>
+            <input type="text" name="PeopleLic" placeholder="PeopleLic" maxlength="16" required><br>
             <p>Please select the Offence descriptin</p>
             <select name="OffenceDescr">
                 <?php

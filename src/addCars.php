@@ -35,7 +35,7 @@
     <div class="divForm">
         <form name="findOwner" class="form" method="post">
             <label for "owner">Please enter the owner's licence of the new car first:</label><br>
-            <input type="text" name="owner" placeholder="owner licence" required><br>
+            <input type="text" name="owner" placeholder="owner licence" maxlength="16" required><br>
             <button type="submit" name="findOwnerExist">Submit</button>
         </form>
     </div>

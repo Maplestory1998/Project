@@ -30,15 +30,15 @@
     <div class="divForm">
         <form name="Info" id="Info" class="form" method="post">
             <label for "make" id="formake">Please input make:</label><br>
-            <input type="text" name="make" id="make" placeholder="make" required><br>
+            <input type="text" name="make" id="make" placeholder="make" maxlength="20" required><br>
             <label for "model" id="formodel">Please input model:</label><br>
-            <input type="text" name="model" id="model" placeholder="model" required><br>
+            <input type="text" name="model" id="model" placeholder="model" maxlength="20" required><br>
             <label for "color" id="forcolor">Please input color:</label><br>
-            <input type="text" name="color" id="color" placeholder="color" required><br>
+            <input type="text" name="color" id="color" placeholder="color" maxlength="20" required><br>
             <label for "ownerName" id="forownerName">Please input owner's name:</label><br>
-            <input type="text" id="ownerName" name="ownerName" placeholder="owner name" required><br>
+            <input type="text" id="ownerName" name="ownerName" placeholder="owner name" maxlength="50" required><br>
             <label for "ownerAdd" id="forownerAdd">Please input owner's address(optional)</label><br>
-            <input type="text" name="ownerAdd" id="ownerAdd" placeholder="owner address"><br>
+            <input type="text" name="ownerAdd" id="ownerAdd" placeholder="owner address" maxlength="50" ><br>
 
             <button type="submit" name="addinfo">Add Car</button>
         </form>

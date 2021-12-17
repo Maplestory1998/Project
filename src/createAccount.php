@@ -39,9 +39,9 @@
     <div class="divForm">
         <form name="createAccount" class="form" method="post">
             <label for "new_username">New Username:</label><br>
-            <input type="text" name="new_username" required><br>
+            <input type="text" name="new_username" maxlength="45" required><br>
             <label for "new_password">Password:</label><br>
-            <input type="password" name="new_password" required><br>
+            <input type="password" name="new_password" maxlength="45" required><br>
             <button type="submit" name="submit">Create Account</button>
         </form>
     </div>
@@ -52,7 +52,7 @@
         $new_username = $_POST["new_username"];
         $new_password = $_POST["new_password"];
 
-        $sql_verify = "SELECT * FROM PoliceOffice WHERE Username='$new#';";
+        $sql_verify = "SELECT * FROM PoliceOffice WHERE Username='$new_username';";
         $res_verify = mysqli_query($conn, $sql_verify);
         if (mysqli_num_rows($res_verify) > 0) {
             //account has been existed!
@@ -79,7 +79,7 @@
             case "1":
                 alert("account has been existed!!");
                 break;
-            case "3":
+            case "2":
                 alert("Fail to create account!");
         }
     </script>

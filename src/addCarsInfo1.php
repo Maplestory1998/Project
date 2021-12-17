@@ -45,13 +45,13 @@
     <div class="addCarsInfoForm">
         <form name="addCarsInfo" class="form" method="post">
             <label for "vLic">Please input Vehicle Licence:</label>
-            <input type="text" name="vLic" placeholder="Vehicle Licence" required><br>
+            <input type="text" name="vLic" placeholder="Vehicle Licence" maxlength="7" required><br>
             <label for "make">Please input make:</label>
-            <input type="text" name="make" placeholder="make" required><br>
+            <input type="text" name="make" placeholder="make" maxlength="20" required><br>
             <label for "model">Please input model:</label>
-            <input type="text" name="model" placeholder="model" required><br>
+            <input type="text" name="model" placeholder="model" maxlength="20" required><br>
             <label for "color">Please input color:</label>
-            <input type="text" name="color" placeholder="color" required><br>
+            <input type="text" name="color" placeholder="color" maxlength="20" required><br>
             <button type="submit" name="addcarinfo">Add Car</button>
         </form>
     </div>
