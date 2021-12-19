@@ -5,8 +5,9 @@
     {
         $uname = $_POST['username'];
         $psw = $_POST['psw'];
-    
-        $sqlCheckLog = "SELECT Password, role FROM PoliceOffice WHERE Username = '$uname' AND Password = '$psw'; " ;
+        
+        //query Password and User authority
+        $sqlCheckLog = "SELECT Police_ID, Password, role FROM PoliceOfficer WHERE Username = '$uname' AND Password = '$psw'; " ;
         
         $resultCheckLog = mysqli_query($conn, $sqlCheckLog);
     
@@ -14,8 +15,9 @@
         {  
             $row = mysqli_fetch_assoc($resultCheckLog);
             session_start();
-            $_SESSION['username'] = $uname ;
-            $_SESSION['role'] = $row["role"]; // 1-admin ;
+            $_SESSION['username'] = $uname ;  //keep username
+            $_SESSION['role'] = $row["role"]; // 1-admin    0-ordinary police ;
+            $_SESSION['ID'] = $row["Police_ID"];
             mysqli_close($conn);
     
             header('Location: index.php');

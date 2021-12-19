@@ -14,7 +14,7 @@ if (isset($_POST["subPsw"])) {
 
 
     $msg = "";
-    $sql1 = "SELECT Password FROM PoliceOffice WHERE Username = '$username' ;";
+    $sql1 = "SELECT Password FROM PoliceOfficer WHERE Username = '$username' ;";
     $result = mysqli_query($conn, $sql1);
 
     if (mysqli_num_rows($result) > 0) {
@@ -24,11 +24,11 @@ if (isset($_POST["subPsw"])) {
             // Current Password is incorrect
             $msg = "1";
         } else {
-            $sql2 = "UPDATE PoliceOffice SET Password = '$newpsw' WHERE Username = '$username';";
+            $sql2 = "UPDATE PoliceOfficer SET Password = '$newpsw' WHERE Username = '$username';";
             //change psw;
             mysqli_query($conn, $sql2);
             //verify if the password has been changed;
-            $sql3 = "SELECT * FROM PoliceOffice WHERE Username = '$username' AND Password = '$newpsw' ";
+            $sql3 = "SELECT * FROM PoliceOfficer WHERE Username = '$username' AND Password = '$newpsw' ";
             mysqli_query($conn, $sql3);
             if (mysqli_num_rows($result) > 0) //success
                 // Password Changed successful!

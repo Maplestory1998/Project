@@ -20,6 +20,7 @@
             <label for "psw">Password:</label><br>
             <input type="password" name="psw" placeholder="Password" required><br>
             <?php
+            // print login error information
             $ret = $_GET["msg"];
             echo "<p style=\"color:red\">$ret</p>"  ;
             ?>

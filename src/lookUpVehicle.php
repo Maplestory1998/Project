@@ -60,12 +60,14 @@
     $sql = "";
     if (isset($_POST["submit"])) {
         $licence = $_POST["licence"];
+        // try to query Vehicle information and Owner information
         $sql = "SELECT Vehicle_licence, Vehicle_make, Vehicle_model, Vehicle_colour, People_name, People_licence FROM Vehicle as V, People as P, Ownership as O
                     WHERE P.People_ID = O.People_ID AND O.Vehicle_ID =  V.Vehicle_ID AND V.Vehicle_licence = '$licence'; ";
 
         $result = mysqli_query($conn, $sql);
         $num = mysqli_num_rows($result);
 
+        // Owner information exists, print all information
         if ($num > 0) {
             echo "<div class='result'>";
             echo "<table border='1' width='80%' align='center'>";
@@ -85,7 +87,7 @@
             echo "</table>";
             echo "</div>";
         } else {
-            //owner might be unknown.
+            //owner might be unknown. query excluding Owner information
             $sql2 = "SELECT Vehicle_licence, Vehicle_make, Vehicle_model, Vehicle_colour FROM Vehicle 
                         WHERE Vehicle_licence = '$licence'; ";
 
@@ -110,6 +112,7 @@
                 echo "</table>";
                 echo "</div>";
             }
+            //vehicle is not existing.
             else  echo "<p style=\"color:red\">The vehicle is not in the system</p>"  ;
         }
     }

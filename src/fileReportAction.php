@@ -30,8 +30,8 @@ if (isset($_POST["Add"])) {
 
     // Both Person and Vehicle exist
     if ($num1 > 0 && $num2 > 0) {
-
-        $sql1 = "INSERT INTO Incident(Vehicle_ID, People_ID, Incident_Date, Incident_Report, Offence_ID) VALUES('$VID', '$PID', '$time', '$reportDesc', '$OffenceID');";
+        $Police_ID = $_SESSION['ID'];
+        $sql1 = "INSERT INTO Incident(Vehicle_ID, People_ID, Incident_Date, Incident_Report, Offence_ID, Police_ID) VALUES('$VID', '$PID', '$time', '$reportDesc', '$OffenceID', $Police_ID);";
    
         if (mysqli_query($conn, $sql1)) {
             // successful

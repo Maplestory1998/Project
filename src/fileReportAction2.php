@@ -142,12 +142,13 @@
         $result4 = mysqli_query($conn, $sql4);
         $vID = mysqli_fetch_assoc($result4)['Vehicle_ID'];
 
-        $sql5 = "INSERT INTO Incident(Vehicle_ID, People_ID, Incident_Date, Incident_Report, Offence_ID) VALUES('$vID', '$pID', '$time', '$reportDesc', '$OffenceID');";
+        $Police_ID = $_SESSION['ID'];
+        $sql5 = "INSERT INTO Incident(Vehicle_ID, People_ID, Incident_Date, Incident_Report, Offence_ID, Police_ID) VALUES('$vID', '$pID', '$time', '$reportDesc', '$OffenceID', $Police_ID);";
         $result5 = mysqli_query($conn, $sql5);
         //succeed to add new People and Cars.
         $msg = "0";
 
-        // header("Location: fileReport.php?msg=$msg");
+        header("Location: fileReport.php?msg=$msg");
     }
     ob_end_flush();
     ?>

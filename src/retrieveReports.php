@@ -46,8 +46,8 @@
 
 
 
-    $sql = "SELECT Incident_ID, Vehicle_licence, People_name, People_licence, Incident_Date, Incident_Report, Offence_description
-                FROM Incident AS I, People AS P, Vehicle AS V, Offence AS O WHERE I.Vehicle_ID = V.Vehicle_ID AND I.People_ID = P.People_ID AND O.Offence_ID = I.Offence_iD;";
+    $sql = "SELECT Incident_ID, Vehicle_licence, People_name, People_licence, Incident_Date, Incident_Report, Offence_description, Username
+                FROM Incident AS I, People AS P, Vehicle AS V, Offence AS O , PoliceOfficer AS PO WHERE I.Vehicle_ID = V.Vehicle_ID AND I.People_ID = P.People_ID AND O.Offence_ID = I.Offence_iD AND I.Police_ID = PO.Police_ID;";
 
 
     $result = mysqli_query($conn, $sql);
@@ -66,6 +66,7 @@
                     <th>Incident date</th>
                     <th>Incident report</th>
                     <th>Offence_description</th>
+                    <th>Police Officer Name</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -80,6 +81,7 @@
                 echo "<td>" . $row["Incident_Date"] .  "   <a id='edit' href='?id=$Incident_ID&date=1'>edit</a>" . "</td>";
                 echo "<td>" . $row["Incident_Report"] . "   <a id='edit' href='?id=$Incident_ID&report=1'>edit</a>" . "</td>";
                 echo "<td>" . $row["Offence_description"] . "   <a id='edit' href='?id=$Incident_ID&desc=1'>edit</a>" . "</td>";
+                echo "<td>" . $row["Username"] . "</td>";
                 echo "<td>" . "<button onclick=confirmDelete($Incident_ID)>Delete" . "</td>";
                 echo "</tr>";
             }

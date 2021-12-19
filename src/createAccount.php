@@ -52,13 +52,13 @@
         $new_username = $_POST["new_username"];
         $new_password = $_POST["new_password"];
 
-        $sql_verify = "SELECT * FROM PoliceOffice WHERE Username='$new_username';";
+        $sql_verify = "SELECT * FROM PoliceOfficer WHERE Username='$new_username';";
         $res_verify = mysqli_query($conn, $sql_verify);
         if (mysqli_num_rows($res_verify) > 0) {
             //account has been existed!
             $msg = "1";
         } else {
-            $sql = "INSERT INTO PoliceOffice(Username, Password, role) VALUES('$new_username', '$new_password', 0);";
+            $sql = "INSERT INTO PoliceOfficer(Username, Password, role) VALUES('$new_username', '$new_password', 0);";
             $result = mysqli_query($conn, $sql);
             if ($result == TRUE) {
                 $msg = "0";

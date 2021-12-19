@@ -43,11 +43,13 @@
     include_once('conn.php');
     if (isset($_POST["findOwnerExist"])) {
         $owner = $_POST["owner"];
+        //query owner ID
         $sql_query = "SELECT * FROM People WHERE People_licence = '$owner';";
         $result = mysqli_query($conn, $sql_query);
 
         if (mysqli_num_rows($result) > 0) {
             $ownerID = mysqli_fetch_assoc($result)['People_ID'];
+            //owner exist.
             header("Location: addCarsInfo1.php?ownerID=$ownerID");
         } else {
             $ownerID = "-1";
