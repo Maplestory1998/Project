@@ -21,6 +21,7 @@
             <input type="password" name="psw" placeholder="Password" required><br>
             <?php
             // print login error information
+            error_reporting(0);
             $ret = $_GET["msg"];
             echo "<p style=\"color:red\">$ret</p>"  ;
             ?>

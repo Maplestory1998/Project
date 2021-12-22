@@ -66,6 +66,7 @@
         </div>
         <div class="info">
             <?php
+            error_reporting(0);
             session_start();
             $user = $_SESSION["username"];
             echo "Log as: $user";
